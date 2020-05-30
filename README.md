@@ -7,7 +7,7 @@
 
 2. Enable or Update setting value at Admin > System Configuration > Ticket::Acl::Module###27-Ticket::Acl::Module   
 
-        			<Item Key="NotPossibleDynamicFieldName">Status</Item>  
+        		<Item Key="NotPossibleDynamicFieldName">Status</Item>  
 				<Item Key="NotPossibleDynamicFieldValue">Pending Approval</Item>  
 				<Item Key="NotPossibleTicketState">closed successful;closed unsuccessful</Item>  
         
