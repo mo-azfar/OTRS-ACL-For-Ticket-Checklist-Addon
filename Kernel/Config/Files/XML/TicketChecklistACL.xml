@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <otrs_config version="2.0" init="Application">
-    <Setting Name="Ticket::Acl::Module###27-Ticket::Acl::Module" Required="0" Valid="1">
+    <Setting Name="Ticket::Acl::Module###27-Ticket::Acl::Module" Required="0" Valid="0">
         <Description Translatable="1">ACL module that hide some dynamic field value and closed ticket state if checklist not complete.</Description>
         <Navigation>Core::Ticket::ACL</Navigation>
         <Value>
