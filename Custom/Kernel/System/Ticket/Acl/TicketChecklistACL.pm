@@ -41,10 +41,10 @@ sub Run {
 
     # check if child tickets are not closed
     return 1 if !$Param{TicketID} || !$Param{UserID};
-    
+    my @ChecklistEndState = split /;/, $Param{Config}->{ChecklistEndState};
     my @NotPossibleTicketStates = split /;/, $Param{Config}->{NotPossibleTicketState};
     my $NotPossibleDynamicFieldName = $Param{Config}->{NotPossibleDynamicFieldName};
-	my $NotPossibleDynamicFieldValue = $Param{Config}->{NotPossibleDynamicFieldValue};
+	my @NotPossibleDynamicFieldValue = split /;/, $Param{Config}->{NotPossibleDynamicFieldValue};
     
     #For generating acl unique name
     my $random = int rand(8888);
@@ -57,47 +57,55 @@ sub Run {
         TicketID => $Param{TicketID},
     );
 
-    my $ACL = 0;
     
     if (@TASKLIST)
     {
+        my $count = 0;
+        my @ChecklistCurrentState;
+        
         foreach my $Task (@TASKLIST)
         {
         my %TicketChecklistStatusData = $TicketChecklistStatusObject->TicketChecklistStatusGet( ID => $Task->{StatusID} );
-        next if $TicketChecklistStatusData{Name} eq 'done';
-        next if $TicketChecklistStatusData{Name} eq 'rejected';
-        $ACL = 1;
-        last;
+        push @ChecklistCurrentState,  $TicketChecklistStatusData{Name};
+        $count ++;
         }
-    }
-
-    if ($ACL)
-    {
-        $Param{Acl}->{$ACLName} = {
-
-            # match properties
-            Properties => {
-
-                # current ticket match properties
-                Ticket => {
-                    TicketID => [ $Param{TicketID} ],
-                },
-				
-            },
-
-            # return possible options (black list)
-            PossibleNot => {
-
-                # possible ticket options (black list)
-                Ticket => {
-                    'DynamicField_'.$NotPossibleDynamicFieldName => [$NotPossibleDynamicFieldValue],
-                    State => [@NotPossibleTicketStates],
-                },
-            },
-        };
         
+        my %original = ();
+        my @isect = ();
+        map { $original{$_} = 1 } @ChecklistEndState;
+        @isect = grep { $original{$_} } @ChecklistCurrentState;
+        
+        #total number of matching checklist state not same as total checklist 
+        if (scalar(@isect) ne $count)
+        {
+            $Param{Acl}->{$ACLName} = {
+            
+                # match properties
+                Properties => {
+            
+                    # current ticket match properties
+                    Ticket => {
+                        TicketID => [ $Param{TicketID} ],
+                    },
+                    
+                },
+            
+                # return possible options (black list)
+                PossibleNot => {
+            
+                    # possible ticket options (black list)
+                    Ticket => {
+                        'DynamicField_'.$NotPossibleDynamicFieldName => [@NotPossibleDynamicFieldValue],
+                        State => [@NotPossibleTicketStates],
+                    },
+                },
+            };
+        
+        }
+        
+        return 1;
     }
-    
+
     return 1;
 }
 

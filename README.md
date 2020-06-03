@@ -1,21 +1,23 @@
 # OTRS-ACL-For-Ticket-Checklist-Addon  
 - Built for OTRS CE v6.0  
-- This module extend Ticket Checklist addon by generating specific ACL (disable close state if checklist not complete)  
+- This module extend Ticket Checklist addon by generating specific ACL (e.g: disable close state if checklist not complete)  
 - Addon : https://github.com/reneeb/otrs-TicketChecklist  
 
-1. This system ACL will disable the close state and some dynamic field value if checklist state for not 'done' or 'rejected'  
+1. This system ACL will disable the close state and some dynamic field value if checklist state not 'done' or 'rejected' (as configured) 
 
-2. Enable or Update setting value at Admin > System Configuration > Ticket::Acl::Module###27-Ticket::Acl::Module   
+2. Enable an update setting value at Admin > System Configuration > Ticket::Acl::Module###27-Ticket::Acl::Module   
 
-        		<Item Key="NotPossibleDynamicFieldName">Status</Item>  
+        		<Item Key="ChecklistEndState">done;rejected</Item>
+				<Item Key="NotPossibleDynamicFieldName">Status</Item>  
 				<Item Key="NotPossibleDynamicFieldValue">Pending Approval</Item>  
 				<Item Key="NotPossibleTicketState">closed successful;closed unsuccessful</Item>  
-        
-3. This indicates to perform this ACL when checklist is not complete (not done / not rejected)   
 
-    a) hide dynamic field name Status value (Pending Aproval)  
-    b) hide ticket states closed successful and closed unsuccessful  
-    
+
+				ChecklistEndState = Possible ending / complete for checklist state. Accept multiple value separate by semicolon ;
+				NotPossibleDynamicFieldName = Dynamic field 'name' that the value will be hide upon checklist end state not fully complete. Accept single value only
+				NotPossibleDynamicFieldValue = Dynamic field 'value' that will be hide upon checklist end state not fully complete. Accept multiple value separate by semicolon ;
+				NotPossibleTicketState = Ticket state that will be hide upon checklist end state not fully complete. Accept multiple value separate by semicolon ;
+				
  
 Checklist state not fully 'done' or 'rejected'  
 [![download.png](https://i.postimg.cc/m2L3zqMr/download.png)](https://postimg.cc/5jrQDssc)  
