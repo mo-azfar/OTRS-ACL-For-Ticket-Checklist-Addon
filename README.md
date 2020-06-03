@@ -13,10 +13,10 @@
 				<Item Key="NotPossibleTicketState">closed successful;closed unsuccessful</Item>  
 
 
-				ChecklistEndState = Possible ending / complete for checklist state. Accept multiple value separate by semicolon ;
-				NotPossibleDynamicFieldName = Dynamic field 'name' that the value will be hide upon checklist end state not fully complete. Accept single value only
-				NotPossibleDynamicFieldValue = Dynamic field 'value' that will be hide upon checklist end state not fully complete. Accept multiple value separate by semicolon ;
-				NotPossibleTicketState = Ticket state that will be hide upon checklist end state not fully complete. Accept multiple value separate by semicolon ;
+		ChecklistEndState = Possible ending / complete for checklist state. Accept multiple value separate by semicolon ;  
+		NotPossibleDynamicFieldName = Dynamic field 'name' that the value will be hide upon checklist end state not fully complete. Accept single value only  
+		NotPossibleDynamicFieldValue = Dynamic field 'value' that will be hide upon checklist end state not fully complete. Accept multiple value separate by semicolon ;  
+		NotPossibleTicketState = Ticket state that will be hide upon checklist end state not fully complete. Accept multiple value separate by semicolon ;  
 				
  
 Checklist state not fully 'done' or 'rejected'  
