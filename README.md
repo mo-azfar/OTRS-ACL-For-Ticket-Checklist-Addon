@@ -5,7 +5,7 @@
 
 1. This system ACL will disable the close state and some dynamic field value if checklist state not 'done' or 'rejected' (as configured) 
 
-2. Enable an update setting value at Admin > System Configuration > Ticket::Acl::Module###27-Ticket::Acl::Module   
+2. Enable and update setting value at Admin > System Configuration > Ticket::Acl::Module###27-Ticket::Acl::Module   
 
         		<Item Key="ChecklistEndState">done;rejected</Item>
 				<Item Key="NotPossibleDynamicFieldName">Status</Item>  

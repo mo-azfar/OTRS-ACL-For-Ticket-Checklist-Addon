@@ -10,7 +10,6 @@ use warnings;
 use Data::Dumper;
 
 our @ObjectDependencies = (
-    'Kernel::System::LinkObject',
     'Kernel::System::Log',
     'Kernel::System::Ticket',
 );
@@ -39,7 +38,6 @@ sub Run {
         }
     }
 
-    # check if child tickets are not closed
     return 1 if !$Param{TicketID} || !$Param{UserID};
     my @ChecklistEndState = split /;/, $Param{Config}->{ChecklistEndState};
     my @NotPossibleTicketStates = split /;/, $Param{Config}->{NotPossibleTicketState};
