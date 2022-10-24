@@ -5,7 +5,7 @@
 
 1. This system ACL will disable the close state if checklist state not 'done' or 'rejected' (as configured) 
 
-2. Enable anx update setting value (if needed) at Admin > System Configuration > Ticket::Acl::Module###27-TicketChecklistACL
+2. Enable and update setting value (if needed) at Admin > System Configuration > Ticket::Acl::Module###27-TicketChecklistACL
 
 		ChecklistEndState 
 			- done
