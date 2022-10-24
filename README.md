@@ -7,18 +7,20 @@
 
 2. Enable anx update setting value (if needed) at Admin > System Configuration > Ticket::Acl::Module###27-TicketChecklistACL
 
-        	<Item Key="ChecklistEndState">
-                <Array>
-					<Item>done</Item>
-					<Item>rejected</Item>
-				</Array>
-            </Item>
-			<Item Key="NotPossibleTicketState">
-                <Array>
-					<Item>closed successful</Item>
-					<Item>closed unsuccessful</Item>
-				</Array>
-            </Item>
+    ```
+	<Item Key="ChecklistEndState">
+        <Array>
+			<Item>done</Item>
+			<Item>rejected</Item>
+		</Array>
+    </Item>
+	<Item Key="NotPossibleTicketState">
+        <Array>
+			<Item>closed successful</Item>
+			<Item>closed unsuccessful</Item>
+		</Array>
+    </Item>
+	```
 
 
 		ChecklistEndState = Possible ending / complete for checklist state. Accept multiple value.
