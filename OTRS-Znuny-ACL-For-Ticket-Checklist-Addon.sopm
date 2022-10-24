@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<otrs_package version="1.0">
+      <Name>OTRS-Znuny-ACL-For-Ticket-Checklist-Addon</Name>
+      <Version>1.0.1</Version>
+	  <Framework>6.0.x</Framework>
+	  <Framework>6.1.x</Framework>
+	  <Framework>6.2.x</Framework>
+	  <Framework>6.3.x</Framework>
+	  <Framework>6.4.x</Framework>
+	  <PackageRequired Version="0.6.9">TicketChecklist</PackageRequired>
+	  <Vendor>mo-azfar</Vendor>
+      <URL>https://github.com/mo-azfar/</URL>
+      <License>GNU GENERAL PUBLIC LICENSE Version 3, 29 June 2007</License>
+      <ChangeLog Version="1.0.1" Date="2022-10-24 00:00:01">New package.</ChangeLog>
+      <Description Lang="en">System ACL that  extend Ticket Checklist addon by generating specific ACL (e.g: disable close state if checklist not complete) .</Description>
+      <Filelist>
+         <File Permission="660" Location="Kernel/Config/Files/XML/ZZZTicketChecklistACL.xml"></File>
+         <File Permission="660" Location="Custom/Kernel/System/Ticket/Acl/TicketChecklistACL.pm"></File>
+      </Filelist>
+	  <IntroInstall Type="pre" Title="Install Information" Lang="en"><![CDATA[
+        <br>
+        <b>WELCOME</b>
+        <br>
+        <br>
+        You are about to install the package OTRS-Znuny-ACL-For-Ticket-Checklist-Addon.Check <a href='https://github.com/mo-azfar/OTRS-ACL-For-Ticket-Checklist-Addon' target='_blank'>README</a><br>
+        <br>
+        <br>
+        ((enjoy))<br>
+        <br>
+    ]]></IntroInstall>
+</otrs_package>
