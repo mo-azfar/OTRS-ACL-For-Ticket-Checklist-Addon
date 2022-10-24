@@ -1,16 +1,24 @@
 <?xml version="1.0" encoding="utf-8"?>
 <otrs_config version="2.0" init="Application">
-    <Setting Name="Ticket::Acl::Module###27-Ticket::Acl::Module" Required="0" Valid="1">
+    <Setting Name="Ticket::Acl::Module###27-TicketChecklistACL" Required="0" Valid="1">
         <Description Translatable="1">ACL module that hide some dynamic field value and closed ticket state if checklist state not complete .</Description>
         <Navigation>Core::Ticket::ACL</Navigation>
         <Value>
             <Hash>
                 <Item Key="Module">Kernel::System::Ticket::Acl::TicketChecklistACL</Item>
-				<Item Key="Name">ACL 10001</Item>
-				<Item Key="ChecklistEndState">done;rejected</Item>
-                <Item Key="NotPossibleDynamicFieldName">Status</Item>
-				<Item Key="NotPossibleDynamicFieldValue">Pending Approval</Item>
-				<Item Key="NotPossibleTicketState">closed successful;closed unsuccessful</Item>
+				<Item Key="ACLName">ACL 10001</Item>
+				<Item Key="ChecklistEndState">
+                    <Array>
+						<Item>done</Item>
+						<Item>rejected</Item>
+					</Array>
+                </Item>
+				<Item Key="NotPossibleTicketState">
+                    <Array>
+						<Item>closed successful</Item>
+						<Item>closed unsuccessful</Item>
+					</Array>
+                </Item>
             </Hash>
         </Value>
     </Setting>
